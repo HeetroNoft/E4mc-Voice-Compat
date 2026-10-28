@@ -1,0 +1,10 @@
+.omc
+.SourcesMods
+.gradle/
+build/
+run/
+out/
+.idea/
+*.iml
+.vscode/
+libs/*.jar

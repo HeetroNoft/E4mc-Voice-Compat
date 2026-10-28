@@ -1,0 +1,72 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${fabric_loom_version}"
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    maven { url = 'https://maven.maxhenkel.de/repository/public' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+    compileOnly "de.maxhenkel.voicechat:voicechat-api:${project.voicechat_api_version}"
+    // e4mc and Simple Voice Chat are only needed at compile time; at runtime they are
+    // loaded from run/mods (see copyDevMods) exactly like in a real installation.
+    compileOnly fileTree(dir: 'libs', include: 'e4mc-*.jar')
+
+    testImplementation "de.maxhenkel.voicechat:voicechat-api:${project.voicechat_api_version}"
+    testImplementation platform('org.junit:junit-bom:5.13.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.register('copyDevMods', Copy) {
+    from fileTree(dir: 'libs', include: '*.jar')
+    into file('run/mods')
+}
+
+tasks.matching { it.name.startsWith('run') && it.name != 'runtime' }.configureEach {
+    dependsOn 'copyDevMods'
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'minecraft_version', project.minecraft_version
+    inputs.property 'fabric_loader_version', project.fabric_loader_version
+
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version,
+                'minecraft_version': project.minecraft_version,
+                'fabric_loader_version': project.fabric_loader_version
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(project.java_version as int)
+    }
+    withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = project.java_version as int
+}
+
+jar {
+    from('LICENSE') {
+        rename { "${it}_${project.archives_base_name}" }
+    }
+}
