@@ -8,6 +8,10 @@
     "Heet"
   ],
   "license": "MIT",
+  "icon": {
+    "64": "logo-64.png",
+    "128": "logo-128.png"
+  },
   "environment": "*",
   "entrypoints": {
     "main": [
