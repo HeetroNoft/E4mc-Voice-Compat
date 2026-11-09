@@ -44,12 +44,16 @@ tasks.matching { it.name.startsWith('run') && it.name != 'runtime' }.configureEa
 
 processResources {
     inputs.property 'version', project.version
-    inputs.property 'minecraft_version', project.minecraft_version
+    inputs.property 'minecraft_dependency', project.minecraft_dependency
     inputs.property 'fabric_loader_version', project.fabric_loader_version
+    inputs.property 'voicechat_min_version', project.voicechat_min_version
+    inputs.property 'java_version', project.java_version
 
     filesMatching('fabric.mod.json') {
         expand 'version': project.version,
-                'minecraft_version': project.minecraft_version,
+                'minecraft_dependency': project.minecraft_dependency,
+                'voicechat_min_version': project.voicechat_min_version,
+                'java_version': project.java_version,
                 'fabric_loader_version': project.fabric_loader_version
     }
 }

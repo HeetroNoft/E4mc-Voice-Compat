@@ -29,10 +29,10 @@
   ],
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
-    "minecraft": "${minecraft_version}.x",
-    "java": ">=25",
+    "minecraft": "${minecraft_dependency}",
+    "java": ">=${java_version}",
     "fabric-api": "*",
     "e4mc": "*",
-    "voicechat": ">=2.6.22"
+    "voicechat": ">=${voicechat_min_version}"
   }
 }
