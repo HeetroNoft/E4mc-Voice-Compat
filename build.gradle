@@ -1,5 +1,5 @@
 plugins {
-    id 'net.fabricmc.fabric-loom' version "${fabric_loom_version}"
+    id 'net.fabricmc.fabric-loom-remap' version "${fabric_loom_version}"
 }
 
 version = project.mod_version
@@ -15,13 +15,13 @@ repositories {
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    implementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
-    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
     compileOnly "de.maxhenkel.voicechat:voicechat-api:${project.voicechat_api_version}"
-    // e4mc and Simple Voice Chat are only needed at compile time; at runtime they are
-    // loaded from run/mods (see copyDevMods) exactly like in a real installation.
-    compileOnly fileTree(dir: 'libs', include: 'e4mc-*.jar')
+    // e4mc is only needed at compile time; Simple Voice Chat is reached through its API and a mixin by name
+    modCompileOnly fileTree(dir: 'libs', include: 'e4mc-*.jar')
 
     testImplementation "de.maxhenkel.voicechat:voicechat-api:${project.voicechat_api_version}"
     testImplementation platform('org.junit:junit-bom:5.13.4')
@@ -33,23 +33,18 @@ test {
     useJUnitPlatform()
 }
 
-tasks.register('copyDevMods', Copy) {
-    from fileTree(dir: 'libs', include: '*.jar')
-    into file('run/mods')
-}
-
-tasks.matching { it.name.startsWith('run') && it.name != 'runtime' }.configureEach {
-    dependsOn 'copyDevMods'
-}
-
 processResources {
     inputs.property 'version', project.version
-    inputs.property 'minecraft_version', project.minecraft_version
+    inputs.property 'minecraft_dependency', project.minecraft_dependency
     inputs.property 'fabric_loader_version', project.fabric_loader_version
+    inputs.property 'voicechat_min_version', project.voicechat_min_version
+    inputs.property 'java_version', project.java_version
 
     filesMatching('fabric.mod.json') {
         expand 'version': project.version,
-                'minecraft_version': project.minecraft_version,
+                'minecraft_dependency': project.minecraft_dependency,
+                'voicechat_min_version': project.voicechat_min_version,
+                'java_version': project.java_version,
                 'fabric_loader_version': project.fabric_loader_version
     }
 }

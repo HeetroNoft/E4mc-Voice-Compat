@@ -2,7 +2,7 @@
 
 ![e4mc Voice Compat logo](src/main/resources/logo-128.png)
 
-A Fabric mod for Minecraft 26.2 that makes [Simple Voice Chat](https://modrinth.com/plugin/simple-voice-chat) work for players who join a world through [e4mc](https://modrinth.com/mod/e4mc).
+A Fabric mod for Minecraft 1.21.11 that makes [Simple Voice Chat](https://modrinth.com/plugin/simple-voice-chat) work for players who join a world through [e4mc](https://modrinth.com/mod/e4mc).
 
 ## The problem
 
@@ -20,12 +20,12 @@ For players connected through e4mc, voice packets travel **inside the Minecraft 
 
 | Dependency | Version |
 | --- | --- |
-| Minecraft | 26.2 |
+| Minecraft | 1.21.11 |
 | Fabric Loader | 0.19.3 or newer |
-| Fabric API | any version supported by Simple Voice Chat (0.152.1+26.2 or newer) |
-| e4mc | 6.2.3 (`modern` build) |
-| Simple Voice Chat | 2.6.22 or newer (2.6.x) |
-| Java | 25 |
+| Fabric API | any version supported by Simple Voice Chat (0.141.6+1.21.11 or newer) |
+| e4mc | 6.2.3 (the regular Fabric build, not `modern`) |
+| Simple Voice Chat | 1.21.11-2.6.27 or newer |
+| Java | 21 |
 
 ## Installation
 
@@ -76,18 +76,19 @@ When reporting an issue, please attach both logs: the host's and the joining pla
 The build uses local copies of the e4mc and Simple Voice Chat jars. They aren't committed, so put them in `libs/`:
 
 ```text
-libs/e4mc-fabric-6.2.3-modern.jar
-libs/voicechat-fabric-2.6.22+26.2.jar
+libs/e4mc-fabric-6.2.3.jar
+libs/voicechat-fabric-1.21.11-2.6.27.jar
 ```
 
 Then:
 
 ```sh
 ./gradlew build       # builds build/libs/e4mc_voice_compat-<version>.jar and runs the tests
-./gradlew runClient   # starts a dev client with the jars from libs/ in run/mods
 ```
 
-The build needs a Java 25 JDK. Gradle picks it up through the toolchain set in `gradle/gradle-daemon-jvm.properties`.
+The build compiles for Java 21 and runs Gradle on Java 25 (see `gradle/gradle-daemon-jvm.properties`); Gradle downloads a missing JDK through the Foojay toolchain resolver.
+
+There is no dev client for this version: e4mc only targets production (intermediary) names, so its mixins fail in a Mojang-mapped dev environment. Test the built jar in a regular Fabric installation instead.
 
 ## License
 

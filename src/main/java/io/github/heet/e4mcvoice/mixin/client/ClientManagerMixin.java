@@ -13,7 +13,7 @@ import java.net.SocketAddress;
  * rejects anything that isn't an InetSocketAddress, such as e4mc's Dialtone address. The IP is
  * unused when tunneling, so any resolvable value lets the connection proceed.
  */
-@Mixin(targets = "de.maxhenkel.voicechat.voice.client.ClientManager")
+@Mixin(targets = "de.maxhenkel.voicechat.voice.client.ClientManager", remap = false)
 public abstract class ClientManagerMixin {
 
     @Inject(method = "resolveAddress", at = @At("HEAD"), cancellable = true)

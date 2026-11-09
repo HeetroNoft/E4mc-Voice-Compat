@@ -58,7 +58,7 @@ public class TunnelClientSocket implements ClientVoicechatSocket {
         if (closed || connection == null || !connection.isConnected()) {
             return;
         }
-        connection.send(ClientPlayNetworking.createServerboundPacket(new VoicePayload(data)));
+        connection.send(ClientPlayNetworking.createC2SPacket(new VoicePayload(data)));
     }
 
     @Override

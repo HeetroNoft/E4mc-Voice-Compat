@@ -74,6 +74,6 @@ public final class ServerTunnel {
         if (connection == null || !connection.isConnected()) {
             return;
         }
-        connection.send(ServerPlayNetworking.createClientboundPacket(new VoicePayload(data)));
+        connection.send(ServerPlayNetworking.createS2CPacket(new VoicePayload(data)));
     }
 }

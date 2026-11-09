@@ -22,9 +22,9 @@ public class E4mcVoiceCompat implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        PayloadTypeRegistry.clientboundPlay().register(TunnelEnablePayload.TYPE, TunnelEnablePayload.CODEC);
-        PayloadTypeRegistry.clientboundPlay().register(VoicePayload.TYPE, VoicePayload.CODEC);
-        PayloadTypeRegistry.serverboundPlay().register(VoicePayload.TYPE, VoicePayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(TunnelEnablePayload.TYPE, TunnelEnablePayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(VoicePayload.TYPE, VoicePayload.CODEC);
+        PayloadTypeRegistry.playC2S().register(VoicePayload.TYPE, VoicePayload.CODEC);
 
         // Voice payloads are consumed on the network thread by ServerGamePacketListenerImplMixin before
         // they reach this receiver; it only exists so the channel is advertised to clients.
