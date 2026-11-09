@@ -2,7 +2,7 @@
 
 ![e4mc Voice Compat logo](src/main/resources/logo-128.png)
 
-A Fabric mod for Minecraft 1.20.6 that makes [Simple Voice Chat](https://modrinth.com/plugin/simple-voice-chat) work for players who join a world through [e4mc](https://modrinth.com/mod/e4mc).
+A Fabric mod for Minecraft 1.20.5 that makes [Simple Voice Chat](https://modrinth.com/plugin/simple-voice-chat) work for players who join a world through [e4mc](https://modrinth.com/mod/e4mc).
 
 ## The problem
 
@@ -20,11 +20,11 @@ For players connected through e4mc, voice packets travel **inside the Minecraft 
 
 | Dependency | Version |
 | --- | --- |
-| Minecraft | 1.20.6 |
+| Minecraft | 1.20.5 |
 | Fabric Loader | 0.19.3 or newer |
-| Fabric API | any version supported by Simple Voice Chat (0.100.8+1.20.6 or newer) |
+| Fabric API | any version supported by Simple Voice Chat (0.97.8+1.20.5 or newer) |
 | e4mc | 6.2.3 (the regular Fabric build, not `modern`) |
-| Simple Voice Chat | 1.20.6-2.5.22 or newer |
+| Simple Voice Chat | 1.20.5-2.5.12 or newer |
 | Java | 21 |
 
 ## Installation
@@ -77,7 +77,7 @@ The build uses local copies of the e4mc and Simple Voice Chat jars. They aren't 
 
 ```text
 libs/e4mc-fabric-6.2.3.jar
-libs/voicechat-fabric-1.20.6-2.5.22.jar
+libs/voicechat-fabric-1.20.5-2.5.12.jar
 ```
 
 Then:

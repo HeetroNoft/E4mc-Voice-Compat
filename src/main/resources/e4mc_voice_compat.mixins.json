@@ -10,7 +10,7 @@
   ],
   "client": [
     "client.ClientCommonPacketListenerImplMixin",
-    "client.ClientManagerMixin"
+    "client.FabricClientCompatibilityManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
