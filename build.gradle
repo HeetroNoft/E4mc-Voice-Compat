@@ -20,6 +20,8 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
     compileOnly "de.maxhenkel.voicechat:voicechat-api:${project.voicechat_api_version}"
+    // Minecraft only ships JSpecify from 1.21.11 on; the annotations aren't needed at runtime
+    compileOnly 'org.jspecify:jspecify:1.0.0'
     // e4mc is only needed at compile time; Simple Voice Chat is reached through its API and a mixin by name
     modCompileOnly fileTree(dir: 'libs', include: 'e4mc-*.jar')
 
