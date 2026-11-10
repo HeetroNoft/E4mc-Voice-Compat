@@ -1,6 +1,6 @@
 # e4mc Voice Compat
 
-![e4mc Voice Compat logo](src/main/resources/logo-128.png)
+![e4mc Voice Compat logo](src/main/resources/E4mcVoiceCompatIcon@1x.png)
 
 A Fabric mod for Minecraft 26.1.2 that makes [Simple Voice Chat](https://modrinth.com/plugin/simple-voice-chat) work for players who join a world through [e4mc](https://modrinth.com/mod/e4mc).
 
