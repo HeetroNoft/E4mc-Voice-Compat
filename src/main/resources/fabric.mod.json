@@ -13,7 +13,7 @@
     "64": "E4mcVoiceCompatIcon@05x.png",
     "128": "E4mcVoiceCompatIcon@1x.png",
     "256": "E4mcVoiceCompatIcon@2x.png",
-    "384": "E4mcVoiceCompatIcon@3x.png"
+    "512": "E4mcVoiceCompatIcon@4x.png"
   },
   "environment": "*",
   "entrypoints": {
