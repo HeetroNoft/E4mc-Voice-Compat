@@ -67,3 +67,8 @@ jar {
         rename { "${it}_${project.archives_base_name}" }
     }
 }
+
+// Keep local tool state folders (such as .omc/ in the source folders) out of every jar
+tasks.withType(AbstractArchiveTask).configureEach {
+    exclude '**/.omc/**'
+}
