@@ -4,32 +4,22 @@
   "version": "${version}",
   "name": "e4mc Voice Compat",
   "description": "Makes Simple Voice Chat work for players joining through e4mc by tunneling voice packets through the Minecraft connection.",
-  "authors": [
-    "Heet"
-  ],
+  "authors": ["Heet"],
   "license": "MIT",
   "icon": {
     "32": "E4mcVoiceCompatIcon@025x.png",
     "64": "E4mcVoiceCompatIcon@05x.png",
     "128": "E4mcVoiceCompatIcon@1x.png",
     "256": "E4mcVoiceCompatIcon@2x.png",
-    "384": "E4mcVoiceCompatIcon@3x.png"
+    "512": "E4mcVoiceCompatIcon@4x.png"
   },
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "io.github.heet.e4mcvoice.E4mcVoiceCompat"
-    ],
-    "client": [
-      "io.github.heet.e4mcvoice.client.E4mcVoiceCompatClient"
-    ],
-    "voicechat": [
-      "io.github.heet.e4mcvoice.E4mcVoicePlugin"
-    ]
+    "main": ["io.github.heet.e4mcvoice.E4mcVoiceCompat"],
+    "client": ["io.github.heet.e4mcvoice.client.E4mcVoiceCompatClient"],
+    "voicechat": ["io.github.heet.e4mcvoice.E4mcVoicePlugin"]
   },
-  "mixins": [
-    "e4mc_voice_compat.mixins.json"
-  ],
+  "mixins": ["e4mc_voice_compat.mixins.json"],
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
     "minecraft": "${minecraft_version}.x",
