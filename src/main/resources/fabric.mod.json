@@ -9,8 +9,11 @@
   ],
   "license": "MIT",
   "icon": {
-    "64": "logo-64.png",
-    "128": "logo-128.png"
+    "32": "E4mcVoiceCompatIcon@025x.png",
+    "64": "E4mcVoiceCompatIcon@05x.png",
+    "128": "E4mcVoiceCompatIcon@1x.png",
+    "256": "E4mcVoiceCompatIcon@2x.png",
+    "384": "E4mcVoiceCompatIcon@3x.png"
   },
   "environment": "*",
   "entrypoints": {
